@@ -10,8 +10,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
     /*
-     * {@link AndroidFlavorAdapter} is an {@link ArrayAdapter} that can provide the layout for each list
-     * based on a data source, which is a list of {@link AndroidFlavor} objects.
+     * {@link WordAdapter} is an {@link ArrayAdapter} that can provide the layout for each list
+     * based on a data source, which is a list of {@link Word} objects.
      * */
    public class WordAdapter extends ArrayAdapter<Word>  {
 
@@ -39,18 +39,18 @@ import java.util.ArrayList;
                         R.layout.list_item, parent, false);
             }
 
-            // Get the {@link AndroidFlavor} object located at this position in the list
+            // Get the {@link Word} object located at this position in the list
             Word currentWord = getItem(position);
 
             // Find the TextView in the list_item.xml layout with the ID version_name
             TextView miwokTextView = (TextView) listItemView.findViewById(R.id.miwok_text_view);
-            // Get the version name from the current AndroidFlavor object and
+            // Get the version name from the current Word object and
             // set this text on the name TextView
             miwokTextView.setText(currentWord.getMiwokTranslation());
 
             // Find the TextView in the list_item.xml layout with the ID version_number
             TextView defaultTextView = (TextView) listItemView.findViewById(R.id.default_text_view);
-            // Get the version number from the current AndroidFlavor object and
+            // Get the version number from the current Word object and
             // set this text on the number TextView
             defaultTextView.setText(currentWord.getDefaultTranslation());
 
