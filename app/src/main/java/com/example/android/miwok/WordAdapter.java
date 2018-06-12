@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -53,6 +54,12 @@ import java.util.ArrayList;
             // Get the version number from the current Word object and
             // set this text on the number TextView
             defaultTextView.setText(currentWord.getDefaultTranslation());
+
+
+            // Find the ImageView in the list_item.xml layout with the ID image.
+            ImageView imageView = (ImageView) listItemView.findViewById(R.id.image);
+            // Set the ImageView to the image resource specified in the current Word
+            imageView.setImageResource(currentWord.getImageResourceId());
 
             // Return the whole list item layout (containing 2 TextViews and an ImageView)
             // so that it can be shown in the ListView
