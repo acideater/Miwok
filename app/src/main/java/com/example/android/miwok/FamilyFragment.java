@@ -15,19 +15,16 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 /**
- * A simple {@link Fragment} subclass.
+ * {@link Fragment} that displays a list of family vocabulary words.
  */
 public class FamilyFragment extends Fragment {
-
 
     /**
      * Handles playback of all the sound files
      */
     private MediaPlayer mMediaPlayer;
 
-    /**
-     * Handles audio focus when playing a sound file
-     */
+    /** Handles audio focus when playing a sound file */
     private AudioManager mAudioManager;
 
     /**
@@ -71,11 +68,9 @@ public class FamilyFragment extends Fragment {
         }
     };
 
-
     public FamilyFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -108,22 +103,17 @@ public class FamilyFragment extends Fragment {
         words.add(new Word(R.string.family_grandfather, R.string.miwok_family_grandfather,
                 R.drawable.family_grandfather, R.raw.family_grandfather));
 
-        // Create an {@link ArrayAdapter}, whose data source is a list of Strings. The
-        // adapter knows how to create layouts for each item in the list, using the
-        // simple_list_item_1.xml layout resource defined in the Android framework.
-        // This list item layout contains a single {@link TextView}, which the adapter will set to
-        // display a single word.
+        // Create an {@link WordAdapter}, whose data source is a list of {@link Word}s. The
+        // adapter knows how to create list items for each item in the list.
         WordAdapter adapter = new WordAdapter(getActivity(), words, R.color.category_family);
 
         // Find the {@link ListView} object in the view hierarchy of the {@link Activity}.
         // There should be a {@link ListView} with the view ID called list, which is declared in the
-        // activity_numbers.xml layout file.
+        // word_list.xml layout file.
         ListView listView = (ListView) rootView.findViewById(R.id.list);
 
-        // Make the {@link ListView} use the {@link ArrayAdapter} we created above, so that the
-        // {@link ListView} will display list items for each word in the list of words.
-        // Do this by calling the setAdapter method on the {@link ListView} object and pass in
-        // 1 argument, which is the {@link ArrayAdapter} with the variable name itemsAdapter.
+        // Make the {@link ListView} use the {@link WordAdapter} we created above, so that the
+        // {@link ListView} will display list items for each {@link Word} in the list.
         listView.setAdapter(adapter);
 
         // Set a click listener to play the audio when the list item is clicked on
@@ -156,7 +146,6 @@ public class FamilyFragment extends Fragment {
                     // Setup a listener on the media player, so that we can stop and release the
                     // media player once the sound has finished playing.
                     mMediaPlayer.setOnCompletionListener(mCompletionListener);
-
                 }
             }
         });
@@ -164,10 +153,10 @@ public class FamilyFragment extends Fragment {
         return rootView;
     }
 
-
     @Override
     public void onStop() {
         super.onStop();
+
         // When the activity is stopped, release the media player resources because we won't
         // be playing any more sounds.
         releaseMediaPlayer();
@@ -187,6 +176,10 @@ public class FamilyFragment extends Fragment {
             // setting the media player to null is an easy way to tell that the media player
             // is not configured to play an audio file at the moment.
             mMediaPlayer = null;
+
+            // Regardless of whether or not we were granted audio focus, abandon it. This also
+            // unregisters the AudioFocusChangeListener so we don't get anymore callbacks.
+            mAudioManager.abandonAudioFocus(mOnAudioFocusChangeListener);
         }
     }
 }

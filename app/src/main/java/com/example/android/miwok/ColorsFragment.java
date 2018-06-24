@@ -15,19 +15,16 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 /**
- * A simple {@link Fragment} subclass.
+ * {@link Fragment} that displays a list of color vocabulary words.
  */
 public class ColorsFragment extends Fragment {
-
 
     /**
      * Handles playback of all the sound files
      */
     private MediaPlayer mMediaPlayer;
 
-    /**
-     * Handles audio focus when playing a sound file
-     */
+    /** Handles audio focus when playing a sound file */
     private AudioManager mAudioManager;
 
     /**
@@ -71,11 +68,9 @@ public class ColorsFragment extends Fragment {
         }
     };
 
-
     public ColorsFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -154,7 +149,6 @@ public class ColorsFragment extends Fragment {
         return rootView;
     }
 
-
     @Override
     public void onStop() {
         super.onStop();
@@ -184,6 +178,4 @@ public class ColorsFragment extends Fragment {
             mAudioManager.abandonAudioFocus(mOnAudioFocusChangeListener);
         }
     }
-
-
 }

@@ -24,9 +24,7 @@ public class PhrasesFragment extends Fragment {
      */
     private MediaPlayer mMediaPlayer;
 
-    /**
-     * Handles audio focus when playing a sound file
-     */
+    /** Handles audio focus when playing a sound file */
     private AudioManager mAudioManager;
 
     /**

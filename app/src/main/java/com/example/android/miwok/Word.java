@@ -11,18 +11,18 @@ public class Word {
      * Constant value that represents no image was provided for this word
      */
     private static final int NO_IMAGE_PROVIDED = -1;
-    /**
-     * String resource ID for the default translation of the word
-     */
+    /** String resource ID for the default translation of the word */
     private int mDefaultTranslationId;
+
+    /** Audio resource ID for the word */
+    private int mAudioResourceId;
+
+    /** Image resource ID for the word */
+    private int mImageResourceId = NO_IMAGE_PROVIDED;
     /**
      * String resource ID for the Miwok translation of the word
      */
     private int mMiwokTranslationId;
-    /** Audio resource ID for the word */
-    private int mAudioResourceId;
-    /** Image resource ID for the word */
-    private int mImageResourceId = NO_IMAGE_PROVIDED;
 
     /**
      * Create a new Word object.

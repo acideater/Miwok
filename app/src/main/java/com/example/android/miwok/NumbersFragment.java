@@ -15,19 +15,16 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 /**
- * A simple {@link Fragment} subclass.
+ * {@link Fragment} that displays a list of number vocabulary words.
  */
 public class NumbersFragment extends Fragment {
-
 
     /**
      * Handles playback of all the sound files
      */
     private MediaPlayer mMediaPlayer;
 
-    /**
-     * Handles audio focus when playing a sound file
-     */
+    /** Handles audio focus when playing a sound file */
     private AudioManager mAudioManager;
 
     /**
@@ -71,11 +68,9 @@ public class NumbersFragment extends Fragment {
         }
     };
 
-
     public NumbersFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -107,7 +102,7 @@ public class NumbersFragment extends Fragment {
                 R.drawable.number_nine, R.raw.number_nine));
         words.add(new Word(R.string.number_ten, R.string.miwok_number_ten,
                 R.drawable.number_ten, R.raw.number_ten));
-        
+
         // Create an {@link WordAdapter}, whose data source is a list of {@link Word}s. The
         // adapter knows how to create list items for each item in the list.
         WordAdapter adapter = new WordAdapter(getActivity(), words, R.color.category_numbers);
@@ -158,7 +153,6 @@ public class NumbersFragment extends Fragment {
         return rootView;
     }
 
-
     @Override
     public void onStop() {
         super.onStop();
@@ -188,6 +182,4 @@ public class NumbersFragment extends Fragment {
             mAudioManager.abandonAudioFocus(mOnAudioFocusChangeListener);
         }
     }
-
-
 }
